@@ -182,18 +182,15 @@ public class BaseImageDownloader implements ImageDownloader {
 		}
 	}
 
-	@TargetApi(Build.VERSION_CODES.FROYO)
 	private InputStream getVideoThumbnailStream(String filePath) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.FROYO) {
-			Bitmap bitmap = ThumbnailUtils
-					.createVideoThumbnail(filePath, MediaStore.Images.Thumbnails.FULL_SCREEN_KIND);
-			if (bitmap != null) {
-				ByteArrayOutputStream bos = new ByteArrayOutputStream();
-				bitmap.compress(CompressFormat.PNG, 0, bos);
-				return new ByteArrayInputStream(bos.toByteArray());
-			}
-		}
-		return null;
+        Bitmap bitmap = ThumbnailUtils
+                .createVideoThumbnail(filePath, MediaStore.Images.Thumbnails.FULL_SCREEN_KIND);
+        if (bitmap != null) {
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(CompressFormat.PNG, 0, bos);
+            return new ByteArrayInputStream(bos.toByteArray());
+        }
+        return null;
 	}
 
 	/**
@@ -225,15 +222,10 @@ public class BaseImageDownloader implements ImageDownloader {
 		return res.openInputStream(uri);
 	}
 
-	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	protected InputStream getContactPhotoStream(Uri uri) {
 		ContentResolver res = context.getContentResolver();
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-			return ContactsContract.Contacts.openContactPhotoInputStream(res, uri, true);
-		} else {
-			return ContactsContract.Contacts.openContactPhotoInputStream(res, uri);
-		}
-	}
+        return ContactsContract.Contacts.openContactPhotoInputStream(res, uri, true);
+    }
 
 	/**
 	 * Retrieves {@link InputStream} of image by URI (image is located in assets of application).

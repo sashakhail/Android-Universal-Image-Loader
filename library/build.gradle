@@ -1,45 +1,93 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'maven-publish'
+group = 'com.github.sashakhail' // Your GitHub username
+version = '1.0.1' // Version to be published
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 34
+    buildToolsVersion '35.0.0'
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 28
-        versionCode 40
-        versionName "1.9.5"
+        minSdk 19
+        targetSdk 35
+        versionCode 41
+        versionName "1.0.1"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
+}
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'com.github.sashakhail'
+            artifactId = 'Android-Universal-Image-Loader'
+            version = project.version
+
+            afterEvaluate {
+                artifact("$buildDir/outputs/aar/library-release.aar")
+            }
+
+            pom {
+                name.set("Android-Universal-Image-Loader")
+                description.set("An Android custom view which allows you to have an arc-style menu on your pages.")
+                url.set("https://github.com/sashakhail/Android-Universal-Image-Loader")
+                licenses {
+                    license {
+                        name.set("Apache License 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("sashakhail")
+                        name.set("Sasha Khail")
+                        email.set("sakkkkka@yahoo.com")
+                    }
+                }
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+    }
+
+}
+// Ensure publish task depends on bundling the release AAR
+tasks.named('publishMavenJavaPublicationToMavenLocal').configure {
+    dependsOn tasks.named('bundleReleaseAar')
 }
 
 dependencies {
     testImplementation 'junit:junit:4.12'
-    testImplementation 'org.robolectric:robolectric:3.0-rc3'
+    testImplementation 'org.robolectric:robolectric:4.2.1'
     testImplementation 'com.squareup.assertj:assertj-android:1.0.0'
 }
 
 
 // build a jar with source files
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-artifacts {
-    archives sourcesJar
-}
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
+//artifacts {
+//    archives sourcesJar
+//}
 
 // Build a jar file in addition to the default aar file
-android.libraryVariants.all { variant ->
-    def name = variant.buildType.name
-    def task = project.tasks.create "jar${name.capitalize()}", Jar
-    task.dependsOn variant.javaCompile
-    task.from variant.javaCompile.destinationDir
-    artifacts.add('archives', task);
-}
+//android.libraryVariants.all { variant ->
+//    def name = variant.buildType.name
+//    def task = project.tasks.create "jar${name.capitalize()}", Jar
+//    task.dependsOn variant.javaCompile
+//    task.from variant.javaCompile.destinationDir
+//    artifacts.add('archives', task);
+//}
 
-apply from: '../gradle/maven_push.gradle'
+//apply from: '../gradle/maven_push.gradle'
