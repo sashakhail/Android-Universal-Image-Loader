@@ -23,7 +23,6 @@ import android.view.MenuItem;
 import android.view.View;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.sample.Constants;
-import com.nostra13.universalimageloader.sample.R;
 import com.nostra13.universalimageloader.sample.fragment.ImageGalleryFragment;
 import com.nostra13.universalimageloader.sample.fragment.ImageGridFragment;
 import com.nostra13.universalimageloader.sample.fragment.ImageListFragment;
@@ -34,6 +33,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import UIL.R;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
@@ -94,20 +95,33 @@ public class HomeActivity extends Activity {
 		return true;
 	}
 
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		switch (item.getItemId()) {
+//			case R.id.item_clear_memory_cache:
+//				ImageLoader.getInstance().clearMemoryCache();
+//				return true;
+//			case R.id.item_clear_disc_cache:
+//				ImageLoader.getInstance().clearDiskCache();
+//				return true;
+//			default:
+//				return false;
+//		}
+//	}
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.item_clear_memory_cache:
-				ImageLoader.getInstance().clearMemoryCache();
-				return true;
-			case R.id.item_clear_disc_cache:
-				ImageLoader.getInstance().clearDiskCache();
-				return true;
-			default:
-				return false;
+	public boolean onOptionsItemSelected(MenuItem menuItem) {
+		int itemId = menuItem.getItemId();
+
+		if (itemId == R.id.item_clear_memory_cache) {
+			ImageLoader.getInstance().clearMemoryCache();
+			return true;
+		} else if (itemId == R.id.item_clear_disc_cache) {
+			ImageLoader.getInstance().clearDiskCache();
+			return true;
+		} else {
+			return super.onOptionsItemSelected(menuItem);
 		}
 	}
-
 	private void copyTestImageToSdCard(final File testImageOnSdCard) {
 		new Thread(new Runnable() {
 			@Override

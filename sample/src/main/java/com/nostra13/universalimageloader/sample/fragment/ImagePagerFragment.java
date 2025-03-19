@@ -19,14 +19,16 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -34,7 +36,8 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.sample.Constants;
-import com.nostra13.universalimageloader.sample.R;
+
+import UIL.R;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)

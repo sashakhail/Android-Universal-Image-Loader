@@ -15,6 +15,8 @@
  *******************************************************************************/
 package com.nostra13.universalimageloader.sample;
 
+import UIL.R;
+
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
  */

@@ -33,7 +33,8 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 import com.nostra13.universalimageloader.sample.Constants;
-import com.nostra13.universalimageloader.sample.R;
+
+import UIL.R;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)

@@ -15,13 +15,17 @@
  *******************************************************************************/
 package com.nostra13.universalimageloader.sample.fragment;
 
+
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import androidx.fragment.app.Fragment;
+
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.sample.R;
+
+import UIL.R;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
@@ -38,17 +42,31 @@ public abstract class BaseFragment extends Fragment {
 		inflater.inflate(R.menu.main_menu, menu);
 	}
 
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		switch (item.getItemId()) {
+//			case R.id.item_clear_memory_cache:
+//				ImageLoader.getInstance().clearMemoryCache();
+//				return true;
+//			case R.id.item_clear_disc_cache:
+//				ImageLoader.getInstance().clearDiskCache();
+//				return true;
+//			default:
+//				return false;
+//		}
+//	}
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.item_clear_memory_cache:
-				ImageLoader.getInstance().clearMemoryCache();
-				return true;
-			case R.id.item_clear_disc_cache:
-				ImageLoader.getInstance().clearDiskCache();
-				return true;
-			default:
-				return false;
+	public boolean onOptionsItemSelected(MenuItem menuItem) {
+		int itemId = menuItem.getItemId();
+
+		if (itemId == R.id.item_clear_memory_cache) {
+			ImageLoader.getInstance().clearMemoryCache();
+			return true;
+		} else if (itemId == R.id.item_clear_disc_cache) {
+			ImageLoader.getInstance().clearDiskCache();
+			return true;
+		} else {
+			return super.onOptionsItemSelected(menuItem);
 		}
 	}
 }

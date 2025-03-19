@@ -46,7 +46,7 @@ public abstract class LimitedMemoryCache extends BaseMemoryCache {
 
 	/**
 	 * Contains strong references to stored objects. Each next object is added last. If hard cache size will exceed
-	 * limit then first object is deleted (but it continue exist at {@link #softMap} and can be collected by GC at any
+	 * limit then first object is deleted (but it continue exist at {//@link #softMap} and can be collected by GC at any
 	 * time)
 	 */
 	private final List<Bitmap> hardCache = Collections.synchronizedList(new LinkedList<Bitmap>());

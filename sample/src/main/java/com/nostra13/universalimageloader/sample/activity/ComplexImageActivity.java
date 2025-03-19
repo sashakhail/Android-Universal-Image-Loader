@@ -16,14 +16,17 @@
 package com.nostra13.universalimageloader.sample.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import com.nostra13.universalimageloader.sample.R;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import com.nostra13.universalimageloader.sample.fragment.ImageGridFragment;
 import com.nostra13.universalimageloader.sample.fragment.ImageListFragment;
+
+import UIL.R;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
@@ -58,8 +61,8 @@ public class ComplexImageActivity extends FragmentActivity {
 
 		ImagePagerAdapter(FragmentManager fm) {
 			super(fm);
-			listFragment = new ImageListFragment();
-			gridFragment = new ImageGridFragment();
+			listFragment = new Fragment();
+			gridFragment = new Fragment();
 		}
 
 		@Override

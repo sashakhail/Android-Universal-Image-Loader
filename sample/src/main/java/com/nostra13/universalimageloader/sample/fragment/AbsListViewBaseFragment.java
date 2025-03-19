@@ -22,8 +22,9 @@ import android.widget.AbsListView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 import com.nostra13.universalimageloader.sample.Constants;
-import com.nostra13.universalimageloader.sample.R;
 import com.nostra13.universalimageloader.sample.activity.SimpleImageActivity;
+
+import UIL.R;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
@@ -55,24 +56,41 @@ public abstract class AbsListViewBaseFragment extends BaseFragment {
 		pauseOnFlingItem.setChecked(pauseOnFling);
 	}
 
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		switch (item.getItemId()) {
+//			case R.id.item_pause_on_scroll:
+//				pauseOnScroll = !pauseOnScroll;
+//				item.setChecked(pauseOnScroll);
+//				applyScrollListener();
+//				return true;
+//			case R.id.item_pause_on_fling:
+//				pauseOnFling = !pauseOnFling;
+//				item.setChecked(pauseOnFling);
+//				applyScrollListener();
+//				return true;
+//			default:
+//				return super.onOptionsItemSelected(item);
+//		}
+//	}
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.item_pause_on_scroll:
-				pauseOnScroll = !pauseOnScroll;
-				item.setChecked(pauseOnScroll);
-				applyScrollListener();
-				return true;
-			case R.id.item_pause_on_fling:
-				pauseOnFling = !pauseOnFling;
-				item.setChecked(pauseOnFling);
-				applyScrollListener();
-				return true;
-			default:
-				return super.onOptionsItemSelected(item);
+	public boolean onOptionsItemSelected(MenuItem menuItem) {
+		int itemId = menuItem.getItemId();
+
+		if (itemId == R.id.item_pause_on_scroll) {
+			pauseOnScroll = !pauseOnScroll;
+			menuItem.setChecked(pauseOnScroll);
+			applyScrollListener();
+			return true;
+		} else if (itemId == R.id.item_pause_on_fling) {
+			pauseOnFling = !pauseOnFling;
+			menuItem.setChecked(pauseOnFling);
+			applyScrollListener();
+			return true;
+		} else {
+			return super.onOptionsItemSelected(menuItem);
 		}
 	}
-
 	protected void startImagePagerActivity(int position) {
 		Intent intent = new Intent(getActivity(), SimpleImageActivity.class);
 		intent.putExtra(Constants.Extra.FRAGMENT_INDEX, ImagePagerFragment.INDEX);

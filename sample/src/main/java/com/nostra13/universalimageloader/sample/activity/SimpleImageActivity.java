@@ -16,14 +16,17 @@
 package com.nostra13.universalimageloader.sample.activity;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
 import com.nostra13.universalimageloader.sample.Constants;
-import com.nostra13.universalimageloader.sample.R;
 import com.nostra13.universalimageloader.sample.fragment.ImageGalleryFragment;
 import com.nostra13.universalimageloader.sample.fragment.ImageGridFragment;
 import com.nostra13.universalimageloader.sample.fragment.ImageListFragment;
 import com.nostra13.universalimageloader.sample.fragment.ImagePagerFragment;
+
+import UIL.R;
 
 /**
  * @author Sergey Tarasevich (nostra13[at]gmail[dot]com)
