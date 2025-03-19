@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 group = 'com.github.sashakhail' // Your GitHub username
-version = '1.0.1' // Version to be published
+version = '1.9.6' // Version to be published
 android {
     compileSdkVersion 34
     buildToolsVersion '35.0.0'
@@ -10,7 +10,7 @@ android {
         minSdk 19
         targetSdk 35
         versionCode 41
-        versionName "1.0.1"
+        versionName "1.9.6"
     }
     buildTypes {
         release {
