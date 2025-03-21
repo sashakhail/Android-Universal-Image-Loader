@@ -35,6 +35,7 @@ Android 4.1+ support
 ## Usage
 
 ### Dependency
+[![](https://jitpack.io/v/sashakhail/Android-Universal-Image-Loader.svg)](https://jitpack.io/#sashakhail/Android-Universal-Image-Loader)
 
 ```
 implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
