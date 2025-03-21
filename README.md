@@ -36,7 +36,10 @@ Android 4.1+ support
 
 ### Dependency
 [![](https://jitpack.io/v/sashakhail/Android-Universal-Image-Loader.svg)](https://jitpack.io/#sashakhail/Android-Universal-Image-Loader)
-
+```
+implementation 'com.github.sashakhail:Android-Universal-Image-Loader:1.9.91'
+```
+This library is used in * **[Urdu Novel Collection](https://urdunovelcollection.com/)** Android Application, You also can use original source given bellow
 ```
 implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 ```
